@@ -7,21 +7,27 @@ body {
 
 header {
     background-color: #ffffffff;
-    padding: 0.1% 0;
+    padding: 0.0001% 0;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
 }
 
 #menu-header {
+    background-color: #fafafa;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 37.5%;
+    border-radius: 30px;
+    margin: 8px 0;
+    margin-top: 1px;
 }
 
 .logo-header{
+    display: flex;
+    align-items: center;
     font-size: 80%;
-    margin-right: 20.8%;
+    margin-right: 18.8%;
     margin-left: 5%;
 }
 
@@ -42,11 +48,12 @@ header {
 
 #menu-header-ul a{
     text-decoration: none;
-    color: black;
+    color:  #404040;;
 }
 
 #inicio-header {
     margin-right: 10%;
+    margin-left: 8%;
     text-decoration: none;
 }
 
