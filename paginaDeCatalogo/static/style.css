@@ -1,0 +1,54 @@
+body {
+    background-color: #ffffffff;
+}
+
+header {
+    background-color: #ffffffff;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+    display: flex;
+}
+
+#menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.logo-header {
+    margin-right: 19.1%;
+    margin-left: 5.2%;
+}
+
+#menu-header-ul {
+    display: flex;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    color: #333333;
+    text-decoration: none;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#inicio-header {
+    margin-right: 9.5%;
+}
+
+#stock-header {
+    margin-right: 9.5%;
+}
+
+#personalizacion-header {
+    margin-right: 9.5%;
+}
+
+#nosotros-header {
+    margin-right: 9.5%;
+}
+
+#contacto-header {
+    margin-right: 7%;
+}
