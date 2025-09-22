@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
 
+:root {
+    --color-dorado: oklch(0.795 0.184 86.047);
+    --color-dorado-oscuro: oklch(0.681 0.162 75.834);
+    --color-dorado-claro: oklch(0.852 0.199 91.936);
+}
 
 body {
     background-color: #ffffffff;
@@ -61,7 +66,7 @@ main {
 
 #menu-header-ul a{
     text-decoration: none;
-    color:  #404040;;
+    color:  #404040;
 }
 
 #inicio-header {
@@ -87,6 +92,36 @@ main {
 }
 
 .intro-texto {
-    margin-top: 8%;
-    margin-left: 5%;
+    margin-top: 8.1%;
+    margin-left: 4.5%;
 }
+
+.intro-texto-uno {
+    color: var(--color-dorado-oscuro);
+    font-weight: 540;
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: -2%;
+}
+
+.intro-texto-dos {
+    font-size: 350%;
+    /*font-weight: 600;*/
+    margin-bottom: -5%;
+}
+
+.intro-texto-tres {
+    display: inline-block;            /* Asegura que la línea solo ocupe el ancho del texto */
+    color: var(--color-dorado-oscuro);
+    font-size: 350%;
+    border-bottom: 5px solid #b8941f;
+}
+
+.intro-texto-cuatro {
+    color:  #404040;;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 135%;
+    font-weight: 500;
+    width: 80%;
+    line-height: 1.6;
+}
+
