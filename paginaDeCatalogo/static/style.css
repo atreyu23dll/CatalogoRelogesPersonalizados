@@ -10,6 +10,15 @@ header {
     padding: 0.0001% 0;
     border-bottom: 1px solid #e0e0e0;
     display: flex;
+    position: fixed;
+    z-index: 1000;
+    top: 0;          /* Lo coloca en la parte superior */
+    left: 0;         /* Alineado a la izquierda */
+    width: 100%;  
+}
+
+main {
+    margin-top: 70px; /* Ajusta este valor según la altura de tu header */
 }
 
 #menu-header {
@@ -33,6 +42,10 @@ header {
 
 .logo-header h1 {
     font-weight: 400;
+}
+
+.logo-unic-header {
+    color: #b8941f;
 }
 
 #menu-header-ul {
@@ -71,4 +84,9 @@ header {
 
 #contacto-header {
     margin-right: 7%;
+}
+
+.intro-texto {
+    margin-top: 8%;
+    margin-left: 5%;
 }
