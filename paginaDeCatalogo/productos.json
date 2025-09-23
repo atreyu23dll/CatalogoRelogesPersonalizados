@@ -1,7 +1,7 @@
 [
     {
         "id": "voyager",
-        "imagen_url": "https://i.ibb.co/hZf9YV2/stock1.png",
+        "imagen_url": "static/Seiko1.png",
         "titulo": "\"The Voyager\"",
         "descripcion_corta": "Inspirado en el clásico Nautilus, con un dial azul profundo y detalles en acero pulido.",
         "descripcion_larga": "Inspirado en los icónicos diseños de Gérald Genta, \"The Voyager\" es una declaración de elegancia y aventura. Su dial azul profundo, con un patrón de rayas horizontales, captura la luz de manera espectacular, evocando las profundidades del océano.",
@@ -15,7 +15,7 @@
     },
     {
         "id": "explorer",
-        "imagen_url": "https://i.ibb.co/K2tHhWw/stock2.png",
+        "imagen_url": "static/Seiko1.png",
         "titulo": "\"The Explorer\"",
         "descripcion_corta": "Un diseño robusto para el aventurero moderno, con detalles en oro rosa y correa de caucho.",
         "descripcion_larga": "Diseñado para el individuo audaz, \"The Explorer\" combina la robustez con un toque de lujo. Los acentos en oro rosa contrastan perfectamente con el negro mate de la correa de caucho y el bisel, creando una pieza versátil para cualquier ocasión.",
@@ -29,7 +29,7 @@
     },
     {
         "id": "daytona",
-        "imagen_url": "https://i.ibb.co/wzWpXhC/stock3.png",
+        "imagen_url": "static/Seiko1.png",
         "titulo": "\"The Daytona\"",
         "descripcion_corta": "Elegancia y precisión. Dial blanco \"panda\" con subesferas negras y bisel de cerámica.",
         "descripcion_larga": "Un homenaje a los legendarios cronógrafos de carreras. El dial \"panda\" ofrece una legibilidad impecable, mientras que el bisel de cerámica negra y los pulsadores atornillados reflejan su herencia deportiva. Precisión y estilo en tu muñeca.",
