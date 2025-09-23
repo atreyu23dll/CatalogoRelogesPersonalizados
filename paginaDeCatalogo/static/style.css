@@ -5,7 +5,7 @@
     --color-dorado: oklch(0.795 0.184 86.047);
     --color-dorado-oscuro: oklch(0.681 0.162 75.834);
     --color-dorado-claro: oklch(0.852 0.199 91.936);
-    --color-gray-50: oklch(.985 .002 247.839)
+    --color-gray-50: oklch(0.985 0.002 247.839)
     --color-gray-100: oklch(.967 .003 264.542)
     --color-gray-200: oklch(.928 .006 264.531)
     --color-gray-300: oklch(.872 .01 258.338)
@@ -16,7 +16,7 @@
     --color-gray-800: oklch(.278 .033 256.848)
     --color-gray-900: oklch(.21 .034 264.665)
     --color-gray-950: oklch(.13 .028 261.692)
-    --Red-800: oklch(0.444 0.177 26.899)
+    --Red-800: #a31515
 }
 
 body {
@@ -44,10 +44,10 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 37.5%;
+    width: 38.5%;
     border-radius: 30px;
     margin: 8px 0;
-    margin-top: 1px;
+    margin-top: 10px;
 }
 
 .logo-header{
@@ -83,25 +83,25 @@ main {
 }
 
 #inicio-header {
-    margin-right: 10%;
+    margin-right: 13%;
     margin-left: 8%;
     text-decoration: none;
 }
 
 #stock-header {
-    margin-right: 10%;
+    margin-right: 13%;
 }
 
 #personalizacion-header {
-    margin-right: 10%;
+    margin-right: 13%;
 }
 
 #nosotros-header {
-    margin-right: 10%;
+    margin-right: 13%;
 }
 
 #contacto-header {
-    margin-right: 7%;
+    margin-right: 0%;
 }
 
 .intro-texto {
@@ -127,7 +127,7 @@ main {
     color: var(--color-dorado-oscuro);
     font-size: 350%;
     padding-bottom: 3px;              /* Espacio entre texto y línea */
-    border-bottom: 5px solid var(--RED-800); /* Línea debajo del texto */
+    border-bottom: 5px solid #a31515; /* Línea debajo del texto */
     margin-bottom: 0%;
 }
 
