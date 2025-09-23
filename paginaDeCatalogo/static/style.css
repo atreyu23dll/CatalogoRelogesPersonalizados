@@ -5,57 +5,49 @@
     --color-dorado: oklch(0.795 0.184 86.047);
     --color-dorado-oscuro: oklch(0.681 0.162 75.834);
     --color-dorado-claro: oklch(0.852 0.199 91.936);
-    --color-gray-50: oklch(0.985 0.002 247.839)
-    --color-gray-100: oklch(.967 .003 264.542)
-    --color-gray-200: oklch(.928 .006 264.531)
-    --color-gray-300: oklch(.872 .01 258.338)
-    --color-gray-400: oklch(.707 .022 261.325)
-    --color-gray-500: oklch(.551 .027 264.364)
-    --color-gray-600: oklch(.446 .03 256.802)
-    --color-gray-700: oklch(.373 .034 259.733)
-    --color-gray-800: oklch(.278 .033 256.848)
-    --color-gray-900: oklch(.21 .034 264.665)
-    --color-gray-950: oklch(.13 .028 261.692)
-    --Red-800: #a31515
+    --color-gray-50: oklch(0.985 0.002 247.839);
+    --color-gray-100: oklch(.967 .003 264.542);
+    --color-gray-200: oklch(.928 .006 264.531);
+    --color-gray-300: oklch(.872 .01 258.338);
+    --color-gray-400: oklch(.707 .022 261.325);
+    --color-gray-500: oklch(.551 .027 264.364);
+    --color-gray-600: oklch(.446 .03 256.802);
+    --color-gray-700: oklch(.373 .034 259.733);
+    --color-gray-800: oklch(.278 .033 256.848);
+    --color-gray-900: oklch(.21 .034 264.665);
+    --color-gray-950: oklch(.13 .028 261.692);
+    --Red-800: #a31515;
 }
 
 body {
     background-color: #ffffffff;
+    margin: 0;
+    padding: 0;
 }
 
 header {
     background-color: #ffffffff;
-    padding: 0.0001% 0;
+    padding: 10px 5%;
     border-bottom: 1px solid #e0e0e0;
-    display: flex;
-    position: fixed;
-    z-index: 1000;
-    top: 0;          /* Lo coloca en la parte superior */
-    left: 0;         /* Alineado a la izquierda */
-    width: 100%;  
-}
-
-main {
-    margin-top: 70px; /* Ajusta este valor según la altura de tu header */
-}
-
-#menu-header {
-    background-color: #fafafa;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 38.5%;
-    border-radius: 30px;
-    margin: 8px 0;
-    margin-top: 10px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.logo-header{
+main {
+    margin-top: 100px;
+}
+
+.logo-header {
     display: flex;
     align-items: center;
     font-size: 80%;
-    margin-right: 18.8%;
-    margin-left: 5%;
 }
 
 .logo-header h1 {
@@ -66,47 +58,121 @@ main {
     color: #b8941f;
 }
 
+/* Estilos del menú de hamburguesa */
+.nav-toggle {
+    display: none;
+}
+
+.nav-toggle-label {
+    display: block;
+    cursor: pointer;
+    z-index: 1001;
+    position: relative;
+    top: 0;
+    right: 0;
+}
+
+.nav-toggle-label span,
+.nav-toggle-label span::before,
+.nav-toggle-label span::after {
+    display: block;
+    background-color: #404040;
+    height: 3px;
+    width: 25px;
+    border-radius: 3px;
+    transition: all 0.3s ease-in-out;
+}
+
+.nav-toggle-label span::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+}
+
+.nav-toggle-label span::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+}
+
+/* Efecto de rotación del botón */
+.nav-toggle:checked + .nav-toggle-label span {
+    transform: rotate(45deg);
+}
+
+.nav-toggle:checked + .nav-toggle-label span::before {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+.nav-toggle:checked + .nav-toggle-label span::after {
+    transform: rotate(90deg);
+    top: 0;
+}
+
+/* Menú de navegación móvil */
+#menu-header {
+    background-color: #fafafa;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    visibility: hidden;
+    z-index: 999;
+}
+
+/* Despliegue del menú */
+.nav-toggle:checked ~ #menu-header {
+    transform: translateY(0);
+    visibility: visible;
+}
+
 #menu-header-ul {
     display: flex;
-    margin-right: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     font-family: Arial, sans-serif;
-    font-size: 16px;
+    font-size: 1.5rem;
     color: #333333;
     list-style: none;
     padding: 0;
     margin: 0;
+    width: 100%;
+    height: 100%;
 }
 
-#menu-header-ul a{
+#menu-header-ul li {
+    margin: 20px 0;
+}
+
+#menu-header-ul a {
     text-decoration: none;
-    color:  #404040;
+    color: #404040;
 }
 
-#inicio-header {
-    margin-right: 13%;
-    margin-left: 8%;
-    text-decoration: none;
+/* Sección 'intro' */
+.intro {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 20px;
+    padding: 20px;
+    text-align: center;
 }
 
-#stock-header {
-    margin-right: 13%;
-}
-
-#personalizacion-header {
-    margin-right: 13%;
-}
-
-#nosotros-header {
-    margin-right: 13%;
-}
-
-#contacto-header {
-    margin-right: 0%;
+.intro-imagen {
+    order: 2;
+    width: 100%;
+    height: auto;
 }
 
 .intro-texto {
-    margin-top: 8.1%;
-    margin-left: 4.5%;
+    order: 1;
+    padding: 0;
 }
 
 .intro-texto-uno {
@@ -117,30 +183,154 @@ main {
 }
 
 .intro-texto-dos {
-    font-size: 350%;
-    /*font-weight: 600;*/
+    font-size: 250%;
     margin-bottom: -3.5%;
 }
 
 .intro-texto-tres {
-    display: inline-block;            /* Asegura que la línea solo ocupe el ancho del texto */
+    display: inline-block;
     color: var(--color-dorado-oscuro);
-    font-size: 350%;
-    padding-bottom: 3px;              /* Espacio entre texto y línea */
-    border-bottom: 5px solid #a31515; /* Línea debajo del texto */
+    font-size: 250%;
+    padding-bottom: 3px;
+    border-bottom: 5px solid #a31515;
     margin-bottom: 0%;
 }
 
 .intro-texto-cuatro {
-    color:  #404040;;
+    color: #404040;
     font-family: 'IBM Plex Mono', monospace;
-    font-size: 115%;
+    font-size: 100%;
     font-weight: 500;
     line-height: 1.6;
     margin-top: 2%;
-    max-width: 50%;    /* Ajusta el valor según el ancho que prefieras */
-    white-space: normal; /* Permite el salto de línea automático */
-    overflow-wrap: break-word; /* Evita que palabras largas desborden */
-    text-align: justify;
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: break-word;
+    text-align: center;
 }
 
+.botones-intro {
+    order: 3;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 15px;
+}
+
+.boton-intro-uno,
+.boton-intro-dos {
+    text-decoration: none;
+    color: white;
+    background-color: var(--color-dorado-oscuro);
+    padding: 15px;
+    border-radius: 5px;
+    text-align: center;
+    display: block;
+}
+
+/* Media query para vista de escritorio */
+@media (min-width: 768px) {
+    .nav-toggle-label {
+        display: none;
+    }
+
+    header {
+        grid-template-columns: 1fr auto;
+        justify-content: space-between;
+        padding: 0 5%;
+        position: fixed;
+        width: 100%;
+    }
+
+    .logo-header {
+        margin: initial;
+        justify-self: start;
+    }
+
+    /* Estilos del menú de escritorio */
+    #menu-header {
+        background-color: var(--color-gray-50);
+        position: static;
+        width: auto; /* Ancho automático para adaptarse al contenido */
+        height: auto;
+        margin-right: 20px;
+        transform: none;
+        visibility: visible;
+        display: flex;
+        align-items: center;
+        border-radius: 50px; /* Borde muy redondeado para forma de píldora */
+        padding: 0 15px; /* Espacio interno para la píldora */
+    }
+
+    #menu-header-ul {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+        padding: 0;
+        margin: 0;
+    }
+
+    #menu-header-ul li {
+        list-style: none;
+    }
+    
+    #menu-header-ul a {
+        text-decoration: none;
+        color: var(--color-gray-600);
+        padding: 10px 15px; /* Espacio interno para los enlaces */
+        display: block;
+    }
+
+    /* Estilo para el elemento activo */
+    #menu-header-ul li.nav-active {
+        background-color: var(--color-gray-900);
+        border-radius: 50px;
+    }
+    
+    #menu-header-ul li.nav-active a {
+        color: var(--color-gray-50);
+        font-weight: 500;
+    }
+
+    main {
+        margin-top: 70px;
+    }
+
+    .intro {
+        grid-template-columns: 1.5fr 1fr;
+        grid-template-areas:
+            "texto imagen"
+            "botones imagen";
+        text-align: left;
+        align-items: center;
+        padding: 0 5%;
+    }
+
+    .intro-texto {
+        grid-area: texto;
+        padding-right: 20px;
+        order: initial;
+    }
+
+    .intro-imagen {
+        grid-area: imagen;
+        order: initial;
+    }
+
+    .intro-texto-dos,
+    .intro-texto-tres {
+        font-size: 350%;
+    }
+
+    .intro-texto-cuatro {
+        max-width: 50%;
+        text-align: justify;
+    }
+
+    .botones-intro {
+        grid-area: botones;
+        grid-template-columns: auto auto;
+        justify-content: start;
+        gap: 20px;
+        order: initial;
+    }
+}

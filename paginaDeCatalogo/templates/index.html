@@ -1,63 +1,100 @@
+<!DOCTYPE html>
 <html>
     <head>
-        <title>
-            UnicTime
-        </title>
+        <title>UnicTime</title>
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
         <header>
+            <div class="logo-header">
+                <h1 class="logo-unic-header">Unic</h1>
+                <h1>Time</h1>
+            </div>
 
-         <div class = "logo-header">
-            <h1 class = "logo-unic-header">Unic</h1>
-            <h1>Time</h1>
-         </div>
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <label for="nav-toggle" class="nav-toggle-label">
+                <span></span>
+            </label>
 
-         <div id="menu-header">
-            <ul id="menu-header-ul">
-                <li id="inicio-header">
-                    <a href="">Inicio</a>
-                </li>
-                <li id="stock-header">
-                    <a href="">Stock</a>
-                </li>
-                <li id="personalizacion-header">
-                    <a href="">Personalizacion</a>
-                </li >
-                <li id="nosotros-header">
-                    <a href="">Nosotros</a>
-                </li >
-                <li id="contacto-header" >
-                    <a  href="">Contacto</a>
-                </li>
-            </ul>
-         </div>
+            <nav id="menu-header">
+                <ul id="menu-header-ul">
+                    <li id="inicio-header">
+                        <a href="#intro-seccion">Inicio</a>
+                    </li>
+                    <li id="stock-header">
+                        <a href="#stock-seccion">Stock</a>
+                    </li>
+                    <li id="personalizacion-header">
+                        <a href="#personalizacion-seccion">Personalizacion</a>
+                    </li >
+                    <li id="nosotros-header">
+                        <a href="#nosotros-seccion">Nosotros</a>
+                    </li >
+                    <li id="contacto-header" >
+                        <a href="#contacto-seccion">Contacto</a>
+                    </li>
+                </ul>
+            </nav>
 
         </header>
 
-        <main>
+        <main id="intro-seccion">
             <div class="intro">
                 <div class="intro-texto">
                     <p class="intro-texto-uno">RELOJERIA PERSONALIZADA</p>
-
                     <p class="intro-texto-dos">Tiempo Único, </p>
                     <p class="intro-texto-tres">Estilo a Tu Medida</p>
-
                     <P class="intro-texto-cuatro">Transformamos relojes Seiko clásicos en piezas 
                         únicas que <br>reflejan tu personalidad. Cada modificación 
                         es una obra de <br>arte funcional.</P>
                 </div>
-
-                <div class="intro-imagen">
-                </div>
-
+                <div class="intro-imagen"></div>
                 <div class="botones-intro">
                     <a href="" class="boton-intro-uno">Explora el stock disponible</a>
                     <a href="" class="boton-intro-dos">Conoce más</a>
                 </div>
-
             </div>
         </main>
+        
+        <section id="stock-seccion" style="height: 100vh; background-color: #f0f0f0;"></section>
+        <section id="personalizacion-seccion" style="height: 100vh;"></section>
+        <section id="nosotros-seccion" style="height: 100vh; background-color: #f0f0f0;"></section>
+        <section id="contacto-seccion" style="height: 100vh;"></section>
 
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // Selecciona todas las secciones del cuerpo de la página
+                const sections = document.querySelectorAll('main, section');
+                // Selecciona todos los enlaces de la navegación
+                const navLinks = document.querySelectorAll('#menu-header-ul a');
+
+                function updateActiveLink() {
+                    let current = '';
+
+                    // Recorre cada sección para ver cuál está visible
+                    sections.forEach(section => {
+                        const sectionTop = section.offsetTop;
+                        const sectionHeight = section.clientHeight;
+
+                        // Si el usuario se desplaza lo suficiente para entrar en la sección
+                        if (scrollY >= (sectionTop - sectionHeight / 3)) {
+                            current = section.getAttribute('id');
+                        }
+                    });
+
+                    // Recorre los enlaces y añade/remueve la clase 'nav-active'
+                    navLinks.forEach(link => {
+                        link.closest('li').classList.remove('nav-active'); // Remueve la clase de todos
+                        if (link.getAttribute('href').includes(current)) {
+                            link.closest('li').classList.add('nav-active'); // Añade la clase al enlace correcto
+                        }
+                    });
+                }
+
+                // Escucha el evento de desplazamiento y la carga inicial de la página
+                window.addEventListener('scroll', updateActiveLink);
+                updateActiveLink(); // Llama a la función una vez al cargar para establecer el estado inicial
+            });
+        </script>
     </body>
 </html>
