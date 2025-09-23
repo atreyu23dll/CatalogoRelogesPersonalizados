@@ -1,100 +1,138 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>UnicTime</title>
-        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
-    </head>
-    <body>
-        <header>
-            <div class="logo-header">
-                <h1 class="logo-unic-header">Unic</h1>
-                <h1>Time</h1>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UnicTime - Relojería Personalizada</title>
+    <script>
+      (function() {
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme === 'dark' || (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark');
+          }
+        } catch (e) { /* No hacer nada si localStorage no está disponible */ }
+      })();
+    </script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⌚</text></svg>">
+    <script src="https://unpkg.com/lucide@latest" defer></script>
+</head>
+<body>
+
+    <header id="header">
+        <div class="logo-header"><a href="#intro-seccion" class="logo-link"><span class="logo-unic-header">Unic</span>Time</a></div>
+        <nav id="nav-menu">
+            <ul id="menu-header-ul">
+                <li><a href="#intro-seccion">Inicio</a></li>
+                <li><a href="#stock-seccion">Stock</a></li>
+                <li><a href="#personalizacion-seccion">Personalización</a></li>
+                <li><a href="#nosotros-seccion">Nosotros</a></li>
+                <li><a href="#contacto-seccion">Contacto</a></li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <button id="theme-toggle-button" aria-label="Cambiar tema"><i data-lucide="sun" class="sun-icon"></i><i data-lucide="moon" class="moon-icon"></i></button>
+            <button id="mobile-menu-button" class="nav-toggle-label" aria-label="Abrir menú" aria-expanded="false"><span class="hamburger-line"></span></button>
+        </div>
+    </header>
+
+    <main>
+        <section id="intro-seccion" class="section-container hero-container">
+            <div class="intro-texto">
+                <p class="intro-texto-uno">RELOJERÍA PERSONALIZADA</p>
+                <h1 class="intro-texto-dos">Tiempo Único,</h1>
+                <h2 class="intro-texto-tres">Estilo a Tu Medida</h2>
+                <p class="intro-texto-cuatro">Transformamos relojes Seiko clásicos en piezas únicas que reflejan tu personalidad. Cada modificación es una obra de arte funcional.</p>
+                <div class="botones-intro"><a href="#stock-seccion" class="btn btn-primary">Explora el stock</a><a href="#nosotros-seccion" class="btn btn-secondary">Conoce más</a></div>
             </div>
+            <div class="intro-imagen animate-float"><img src="https://i.ibb.co/L5hSgVd/hero-watch.png" alt="Reloj personalizado flotando" width="500" height="500"></div>
+        </section>
 
-            <input type="checkbox" id="nav-toggle" class="nav-toggle">
-            <label for="nav-toggle" class="nav-toggle-label">
-                <span></span>
-            </label>
-
-            <nav id="menu-header">
-                <ul id="menu-header-ul">
-                    <li id="inicio-header">
-                        <a href="#intro-seccion">Inicio</a>
-                    </li>
-                    <li id="stock-header">
-                        <a href="#stock-seccion">Stock</a>
-                    </li>
-                    <li id="personalizacion-header">
-                        <a href="#personalizacion-seccion">Personalizacion</a>
-                    </li >
-                    <li id="nosotros-header">
-                        <a href="#nosotros-seccion">Nosotros</a>
-                    </li >
-                    <li id="contacto-header" >
-                        <a href="#contacto-seccion">Contacto</a>
-                    </li>
-                </ul>
-            </nav>
-
-        </header>
-
-        <main id="intro-seccion">
-            <div class="intro">
-                <div class="intro-texto">
-                    <p class="intro-texto-uno">RELOJERIA PERSONALIZADA</p>
-                    <p class="intro-texto-dos">Tiempo Único, </p>
-                    <p class="intro-texto-tres">Estilo a Tu Medida</p>
-                    <P class="intro-texto-cuatro">Transformamos relojes Seiko clásicos en piezas 
-                        únicas que <br>reflejan tu personalidad. Cada modificación 
-                        es una obra de <br>arte funcional.</P>
-                </div>
-                <div class="intro-imagen"></div>
-                <div class="botones-intro">
-                    <a href="" class="boton-intro-uno">Explora el stock disponible</a>
-                    <a href="" class="boton-intro-dos">Conoce más</a>
-                </div>
+        <section id="stock-seccion" class="section-container">
+            <div class="section-title">
+                <h3>Modelos en Stock</h3>
+                <p>Piezas exclusivas listas para ser enviadas. Cada reloj tiene una historia única.</p>
             </div>
-        </main>
+            <div class="stock-grid">
+                {% for producto in productos %}
+                <div class="card">
+                    <div class="card-image"><img src="{{ producto.imagen_url }}" alt="{{ producto.titulo }}" loading="lazy"></div>
+                    <div class="card-content">
+                        <h4 class="card-title">{{ producto.titulo }}</h4>
+                        <p class="card-description">{{ producto.descripcion_corta }}</p>
+                        <span class="card-price">{{ producto.precio }}</span>
+                        <button class="btn btn-secondary btn-full open-popup-btn" data-url="/producto/{{ producto.id }}">Ver detalles</button>
+                    </div>
+                </div>
+                {% else %}
+                <p>No hay productos disponibles en este momento.</p>
+                {% endfor %}
+            </div>
+        </section>
         
-        <section id="stock-seccion" style="height: 100vh; background-color: #f0f0f0;"></section>
-        <section id="personalizacion-seccion" style="height: 100vh;"></section>
-        <section id="nosotros-seccion" style="height: 100vh; background-color: #f0f0f0;"></section>
-        <section id="contacto-seccion" style="height: 100vh;"></section>
+        <section id="personalizacion-seccion" class="section-container">
+            <div class="section-title"><h3>Crea Tu Propio Reloj</h3><p>Tú imaginas, nosotros lo hacemos realidad. Elige cada componente a tu gusto.</p></div>
+            <div class="personalizacion-content">
+                <div class="personalizacion-imagen"><img src="https://i.ibb.co/0J6S6Gz/custom-watch.png" alt="Vista explosionada de un reloj para personalización" loading="lazy"></div>
+                <div class="personalizacion-pasos">
+                    <div class="step-card"><div class="step-icon"><i data-lucide="watch"></i></div><div class="step-text"><h4>1. Elige la Caja</h4><p>Desde acero inoxidable 316L hasta titanio ligero. Define la base de tu reloj.</p></div></div>
+                    <div class="step-card"><div class="step-icon"><i data-lucide="circle-dot"></i></div><div class="step-text"><h4>2. Selecciona el Dial</h4><p>Colores, texturas y marcadores. ¿Prefieres un sunburst azul o un meteorito real?</p></div></div>
+                    <div class="step-card"><div class="step-icon"><i data-lucide="gem"></i></div><div class="step-text"><h4>3. Define los Detalles</h4><p>Agujas, bisel, corona y cristal. Cada pequeño detalle cuenta para un resultado perfecto.</p></div></div>
+                    <a href="#contacto-seccion" class="btn btn-primary">Iniciar consulta</a>
+                </div>
+            </div>
+        </section>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-                // Selecciona todas las secciones del cuerpo de la página
-                const sections = document.querySelectorAll('main, section');
-                // Selecciona todos los enlaces de la navegación
-                const navLinks = document.querySelectorAll('#menu-header-ul a');
+        <section id="nosotros-seccion" class="section-container">
+             <div class="section-title"><h3>Nuestra Pasión, Tu Tiempo</h3><p>Somos artesanos y entusiastas de la relojería dedicados a la perfección.</p></div>
+            <div class="nosotros-content">
+                <div class="nosotros-texto">
+                    <h4>Arte y Precisión en Cada Pieza</h4>
+                    <p>UnicTime nació de la fascinación por la micromecánica y el diseño atemporal. No solo modificamos relojes; les damos una nueva alma. Utilizamos piezas de la más alta calidad y un cuidado meticuloso para asegurar que cada reloj no solo sea estéticamente impresionante, sino también fiable y duradero.</p>
+                </div>
+                <div class="accordion">
+                    <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>¿Qué es un reloj "mod"?</span><i data-lucide="chevron-down" class="accordion-icon"></i></button><div class="accordion-content"><p>Un reloj "mod" (modificado) toma un movimiento de base fiable, como el de Seiko, y personaliza sus componentes externos (caja, dial, agujas, etc.) para crear un diseño único que no se encuentra en el mercado.</p></div></div>
+                    <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>¿Son resistentes al agua?</span><i data-lucide="chevron-down" class="accordion-icon"></i></button><div class="accordion-content"><p>Sí, todos nuestros relojes son ensamblados profesionalmente con juntas de estanqueidad nuevas y probados para garantizar su resistencia al agua para actividades cotidianas como lavarse las manos o la lluvia. No recomendamos el buceo profesional a menos que se solicite específicamente.</p></div></div>
+                    <div class="accordion-item"><button class="accordion-trigger" aria-expanded="false"><span>¿Cuánto tiempo tarda una personalización?</span><i data-lucide="chevron-down" class="accordion-icon"></i></button><div class="accordion-content"><p>El proceso de personalización completa, desde la consulta hasta la entrega, suele tardar entre 4 y 6 semanas, dependiendo de la disponibilidad de las piezas que elijas.</p></div></div>
+                </div>
+            </div>
+        </section>
 
-                function updateActiveLink() {
-                    let current = '';
+        <section id="contacto-seccion" class="section-container">
+            <div class="section-title"><h3>Hablemos de Tu Próximo Reloj</h3><p>Completa el formulario y nuestro equipo se pondrá en contacto contigo para iniciar tu proyecto.</p></div>
+            <div class="contacto-wrapper">
+                <form id="contact-form" class="contact-form" method="POST">
+                    <div class="form-group"><label for="name">Nombre</label><input type="text" id="name" name="name" class="input-field" placeholder="Tu nombre completo" required></div>
+                    <div class="form-group"><label for="email">Correo Electrónico</label><input type="email" id="email" name="email" class="input-field" placeholder="tu@email.com" required></div>
+                    <div class="form-group"><label for="message">Mensaje</label><textarea id="message" name="message" class="textarea-field" placeholder="Describe el reloj de tus sueños..." required rows="4"></textarea></div>
+                    <button type="submit" class="btn btn-primary btn-full">Enviar Mensaje</button>
+                    <p id="form-status" class="form-status" aria-live="polite"></p>
+                </form>
+            </div>
+        </section>
+    </main>
 
-                    // Recorre cada sección para ver cuál está visible
-                    sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        const sectionHeight = section.clientHeight;
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="logo-footer"><span class="logo-unic-header">Unic</span>Time</div>
+            <p>&copy; 2025 UnicTime. Todos los derechos reservados.</p>
+            <div class="footer-socials">
+                <a href="#" aria-label="Visita nuestro Instagram"><i data-lucide="instagram"></i></a>
+                <a href="#" aria-label="Visita nuestro Facebook"><i data-lucide="facebook"></i></a>
+                <a href="#" aria-label="Visita nuestro canal de Youtube"><i data-lucide="youtube"></i></a>
+            </div>
+        </div>
+    </footer>
 
-                        // Si el usuario se desplaza lo suficiente para entrar en la sección
-                        if (scrollY >= (sectionTop - sectionHeight / 3)) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-
-                    // Recorre los enlaces y añade/remueve la clase 'nav-active'
-                    navLinks.forEach(link => {
-                        link.closest('li').classList.remove('nav-active'); // Remueve la clase de todos
-                        if (link.getAttribute('href').includes(current)) {
-                            link.closest('li').classList.add('nav-active'); // Añade la clase al enlace correcto
-                        }
-                    });
-                }
-
-                // Escucha el evento de desplazamiento y la carga inicial de la página
-                window.addEventListener('scroll', updateActiveLink);
-                updateActiveLink(); // Llama a la función una vez al cargar para establecer el estado inicial
-            });
-        </script>
-    </body>
+    <div id="modal-container" class="modal-container" aria-hidden="true">
+        <div class="modal-overlay" tabindex="-1" data-micromodal-close></div>
+        <div class="modal-content" role="dialog" aria-modal="true">
+            <button class="modal-close" aria-label="Cerrar modal" data-micromodal-close>&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+    
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
 </html>
