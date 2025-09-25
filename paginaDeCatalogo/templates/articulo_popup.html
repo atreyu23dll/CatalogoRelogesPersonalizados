@@ -1,0 +1,18 @@
+<div class="article-popup-grid">
+    <div class="article-popup-image">
+        <img src="{{ producto.imagen_url }}" alt="Reloj modelo {{ producto.titulo }}">
+    </div>
+    <div class="article-popup-details">
+        <h2 class="article-popup-title">{{ producto.titulo }}</h2>
+        <span class="article-popup-price">{{ producto.precio }}</span>
+        <p class="article-popup-description">
+            {{ producto.descripcion_larga }}
+        </p>
+        <ul class="article-popup-specs">
+            {% for spec in producto.especificaciones %}
+            <li><i data-lucide="{{ spec.icono }}"></i>{{ spec.detalle | safe }}</li>
+            {% endfor %}
+        </ul>
+        <button class="btn btn-primary btn-full">Añadir al carrito</button>
+    </div>
+</div>
