@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
         navLinks: '#nav-menu a',
         navList: '#menu-header-ul',
         navListItems: '#menu-header-ul li',
+        divIntroImagen : '.intro-imagen',
         sections: 'section[id]',
         themeToggleButton: '#theme-toggle-button',
         accordionTriggers: '.accordion-trigger',
@@ -161,6 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     };
+
+    const initAnimacionImagenIntro = () => {
+        const divIntroImagen = document.querySelector(SELECTORS.divIntroImagen);
+        if (!divIntroImagen) return;
+
+        divIntroImagen.addEventListener('mouseenter', () => {
+            divIntroImagen.classList.add('animate-rotar');
+            divIntroImagen.classList.remove('animate-rotar-reverse');
+        });
+
+        divIntroImagen.addEventListener('mouseleave', () => {
+            divIntroImagen.classList.add('animate-rotar-reverse');
+            divIntroImagen.classList.remove('animate-rotar');        });
+    };
+
+
     
     // Inicializar todos los módulos
     initTheme();
@@ -170,4 +187,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollSpy();
     initContactForm();
     initPopupModal();
+    initAnimacionImagenIntro();
 });
