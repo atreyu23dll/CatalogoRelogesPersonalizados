@@ -589,13 +589,18 @@ html.dark .card:hover {
 }
 
 @keyframes girar {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(10deg); }
+    from { transform: rotate(0deg) scale(1);
+        }
+
+    to { transform: rotate(10deg) scale(1.1);
+    }
 }
 
 @keyframes girar-reverse {
-    from { transform: rotate(10deg); }
-    to { transform: rotate(0deg); }
+    from { transform: rotate(10deg) scale(1.1);
+        }
+    to { transform: rotate(0deg) scale(1);
+    }
 }
 
 .animate-rotar {
